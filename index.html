@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Science Smart Tutor - Prep 2 (English)</title>
+    <!-- Font Awesome for optional icon (you can remove if not needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #e0eafc 0%, #cfdef3 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .app-container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 48px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        header {
+            background: #0b3b5f;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-text {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .teacher-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            background: #f4a261;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .teacher-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .title-main {
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+        .subhead {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        header h1, header p {
+            margin: 0;
+        }
+        .main-content {
+            padding: 25px 30px;
+        }
+        .card {
+            background: #f9fafc;
+            border-radius: 32px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        select, button, input {
+            padding: 12px 18px;
+            border-radius: 40px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-weight: 500;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button {
+            background: #1e6f5c;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #0f4c3f;
+            transform: scale(1.02);
+        }
+        .quiz-area {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid #e2e8f0;
+        }
+        .question-box {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 28px;
+            margin-bottom: 25px;
+        }
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .option {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: 1px solid #cbd5e1;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #eef2ff;
+        }
+        input[type="radio"] {
+            transform: scale(1.2);
+            margin-right: 8px;
+        }
+        .essay-area textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 28px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .submit-btn {
+            background: #2c5282;
+            font-size: 1.2rem;
+            padding: 14px 24px;
+            margin-top: 10px;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 18px;
+            background: #e6f7f0;
+            border-radius: 28px;
+            border-left: 8px solid #1e6f5c;
+            text-align: left;
+        }
+        .score-card {
+            background: #fef9e3;
+            padding: 15px;
+            border-radius: 28px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        hr {
+            margin: 20px 0;
+        }
+        footer {
+            background: #e2e8f0;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 700px) {
+            .main-content { padding: 15px; }
+            .title-main { font-size: 1.2rem; }
+            .teacher-image { width: 50px; height: 50px; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <header>
+        <div class="header-text">
+            <!-- الصورة المرفقة: استبدل الرابط أدناه بصورة الأستاذ مصطفى فريد -->
+            <div class="teacher-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f4a261'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='white' font-size='40' font-family='Arial'%3E📘%3C/text%3E%3C/svg%3E" alt="Teacher Mr. Mostafa Farid">
+                <!-- ملاحظة: الصورة الحالية هي أيقونة مؤقتة (كتاب). لاستخدام صورة حقيقية، ضع مسارها بدلاً من data:image... -->
+            </div>
+            <div>
+                <div class="title-main">Test yourself in Science with <span style="color:#ffd966;">Mr. Mostafa Farid</span></div>
+                <div class="subhead">2nd Preparatory Grade | Official Curriculum 2025-2026 (English)</div>
+            </div>
+        </div>
+        <div>
+            <p style="margin:0;"><i class="fas fa-flask"></i> Smart AI Tutor</p>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="card">
+            <div class="flex-row">
+                <div style="flex:1">
+                    <label>📘 Select Unit: </label>
+                    <select id="unitSelect">
+                        <option value="1">Unit 1: Thermal Energy & Changes of Matter</option>
+                        <option value="2">Unit 2: Forces and Motion</option>
+                        <option value="3">Unit 3: Reproduction in Living Organisms</option>
+                        <option value="4">Unit 4: Physical Changes in the Atmosphere</option>
+                    </select>
+                </div>
+                <div style="flex:1">
+                    <label>📖 Select Lesson: </label>
+                    <select id="lessonSelect">
+                        <option value="all">All Lessons (Full Exam)</option>
+                        <option value="1.1">1-1: Thermal Changes Accompanying Physical Changes</option>
+                        <option value="1.2">1-2: Thermal Changes Accompanying Chemical Changes</option>
+                        <option value="1.3">1-3: Combustion, Oxidation and Reduction</option>
+                        <option value="2.1">2-1: Newton's Laws of Motion</option>
+                        <option value="2.2">2-2: Levers</option>
+                        <option value="3.1">3-1: Cell Division</option>
+                        <option value="3.2">3-2: Floral Reproduction</option>
+                        <option value="4.1">4-1: Effect of Temperature & Pressure on Climate</option>
+                        <option value="4.2">4-2: Winds and Weather Forecasts</option>
+                    </select>
+                </div>
+                <div>
+                    <button id="generateExamBtn">🎲 Generate Exam (5 Qs)</button>
+                    <button id="fullExamBtn" style="background:#2d6a4f;">📝 Full Exam (15 Qs)</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizPanel" class="quiz-area" style="display:none;">
+            <h3>📋 Current Exam</h3>
+            <div id="questionsContainer"></div>
+            <button id="submitExam" class="submit-btn">✅ Submit & Grade</button>
+            <div id="resultArea"></div>
+            <div id="reportArea" style="margin-top:20px;"></div>
+        </div>
+
+        <div class="card" id="statsCard" style="display:none;">
+            <div id="performanceSummary" class="score-card"></div>
+        </div>
+    </div>
+    <footer>
+        ⚡ AI-powered grading based on the official 2nd Prep Science curriculum. Instant feedback & weak points analysis.
+    </footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // QUESTION BANK (English) – derived strictly from the provided PDF
+    // --------------------------------------------------------------
+    const questionBank = [
+        // Unit 1 – Lesson 1.1
+        { id:1, unit:"1", lesson:"1.1", type:"mcq", text:"Which substance causes the temperature of water to RISE when dissolved (exothermic dissolution)?", options:["Sodium hydroxide (NaOH)", "Ammonium nitrate (NH₄NO₃)", "Sodium bicarbonate", "Anhydrous cobalt chloride"], correct:"Sodium hydroxide (NaOH)", explanation:"NaOH dissolution releases heat (exothermic). Ammonium nitrate absorbs heat (endothermic).", skill:"remember"},
+        { id:2, unit:"1", lesson:"1.1", type:"mcq", text:"A substance that changes color from blue to pink when a few drops of water are added is:", options:["Hydrated copper sulfate", "Anhydrous copper sulfate", "Hydrated cobalt chloride", "Anhydrous cobalt chloride"], correct:"Anhydrous cobalt chloride", explanation:"Anhydrous CoCl₂ is blue; it becomes pink (hydrated) when water is added.", skill:"remember"},
+        { id:3, unit:"1", lesson:"1.1", type:"essay", text:"Why do our hands feel cold when using antiseptic hand gel (alcohol)?", correctKeywords:["evaporation", "absorbs heat", "endothermic"], explanation:"Alcohol evaporates quickly and absorbs heat from the skin – an endothermic process.", skill:"apply"},
+        
+        // Unit 1 – Lesson 1.2
+        { id:4, unit:"1", lesson:"1.2", type:"mcq", text:"Which reaction is exothermic?", options:["Reaction of citric acid with sodium bicarbonate", "Reaction of magnesium with dilute HCl", "Melting of ice", "Evaporation of water"], correct:"Reaction of magnesium with dilute HCl", explanation:"Mg + HCl releases heat (exothermic). The others are endothermic or physical changes.", skill:"remember"},
+        { id:5, unit:"1", lesson:"1.2", type:"mcq", text:"Who proved the Law of Conservation of Energy?", options:["Newton", "Helmholtz", "Galileo", "Archimedes"], correct:"Helmholtz", explanation:"Hermann von Helmholtz demonstrated that energy is neither created nor destroyed, only transformed.", skill:"knowledge"},
+        { id:6, unit:"1", lesson:"1.2", type:"essay", text:"Explain how the thermite reaction (Al + Fe₂O₃) obeys the Law of Conservation of Energy.", correctKeywords:["energy released", "bond breaking", "bond forming", "difference appears as heat"], explanation:"The energy released from forming new bonds (Al₂O₃) is greater than the energy absorbed to break old bonds; the difference is released as heat, conserving total energy.", skill:"analyze"},
+        
+        // Unit 1 – Lesson 1.3
+        { id:7, unit:"1", lesson:"1.3", type:"mcq", text:"The three elements of the Fire Triangle are:", options:["Fuel, Oxygen, Heat source", "Fuel, Oxygen, Water", "Heat, CO₂, Fuel", "Oxygen, Nitrogen, Fuel"], correct:"Fuel, Oxygen, Heat source", explanation:"Combustion needs fuel, oxygen, and ignition temperature.", skill:"remember"},
+        { id:8, unit:"1", lesson:"1.3", type:"mcq", text:"Which gas mixture produces a flame used for welding and cutting metals (reaches ~3000°C)?", options:["Acetylene + Oxygen", "Hydrogen + Chlorine", "Methane + Nitrogen", "Propane + Oxygen"], correct:"Acetylene + Oxygen", explanation:"Oxyacetylene flame (C₂H₂ + O₂) reaches 3000°C and is used for welding.", skill:"remember"},
+        { id:9, unit:"1", lesson:"1.3", type:"essay", text:"Why should water never be used to extinguish a sodium fire?", correctKeywords:["exothermic reaction", "hydrogen gas", "burns"], explanation:"Sodium reacts violently with water, producing hydrogen gas which ignites, making the fire worse.", skill:"apply"},
+        
+        // Unit 2 – Lesson 2.1 (Newton's Laws)
+        { id:10, unit:"2", lesson:"2.1", type:"mcq", text:"A zero net force acting on a stationary object causes the object to:", options:["move with constant speed", "remain at rest", "accelerate", "move with increasing speed"], correct:"remain at rest", explanation:"Newton's First Law: an object at rest stays at rest unless acted by an unbalanced force.", skill:"understand"},
+        { id:11, unit:"2", lesson:"2.1", type:"mcq", text:"Which object has the greatest inertia?", options:["0.1 kg ball moving at 50 m/s", "70 kg runner moving at 30 m/s", "1000 kg car moving at 50 m/s", "2000 kg van moving at 30 m/s"], correct:"2000 kg van moving at 30 m/s", explanation:"Inertia depends only on mass; the van has the largest mass (2000 kg).", skill:"deduce"},
+        { id:12, unit:"2", lesson:"2.1", type:"essay", text:"State Newton’s Second Law mathematically and define acceleration units.", correctKeywords:["F = m × a", "N/kg or m/s²"], explanation:"Force = mass × acceleration. Acceleration is measured in m/s² or N/kg.", skill:"math"},
+        { id:13, unit:"2", lesson:"2.1", type:"mcq", text:"In an elastic collision between two equal-mass objects, where one is moving and the other stationary, what happens?", options:["The moving stops, the stationary moves with same speed", "Both move together at half speed", "Both rebound", "Both stop"], correct:"The moving stops, the stationary moves with same speed", explanation:"In a perfectly elastic collision, the moving object transfers its velocity to the stationary one.", skill:"analyze"},
+        
+        // Unit 2 – Lesson 2.2 (Levers)
+        { id:14, unit:"2", lesson:"2.2", type:"mcq", text:"Which class of lever always saves effort (mechanical advantage > 1)?", options:["First-class", "Second-class", "Third-class", "All classes"], correct:"Second-class", explanation:"In second-class levers, the effort arm is always longer than the load arm.", skill:"understand"},
+        { id:15, unit:"2", lesson:"2.2", type:"essay", text:"A first-class lever has effort arm = 30 cm and load arm = 15 cm. Calculate its mechanical advantage. Does it save effort?", correctKeywords:["2", "easier"], explanation:"MA = effort arm / load arm = 30/15 = 2. Since MA > 1, it saves effort.", skill:"calculate"},
+        
+        // Unit 3 – Lesson 3.1 (Cell division)
+        { id:16, unit:"3", lesson:"3.1", type:"mcq", text:"The type of cell division that produces four haploid (n) daughter cells is:", options:["Mitosis", "Meiosis", "Binary fission", "Budding"], correct:"Meiosis", explanation:"Meiosis reduces chromosome number by half, producing four haploid gametes.", skill:"remember"},
+        { id:17, unit:"3", lesson:"3.1", type:"essay", text:"Why does sexual reproduction lead to genetic variation among offspring?", correctKeywords:["crossing over", "gene mixing", "two parents"], explanation:"Crossing over during meiosis I and random fusion of gametes produce new genetic combinations.", skill:"understand"},
+        
+        // Unit 3 – Lesson 3.2 (Floral reproduction)
+        { id:18, unit:"3", lesson:"3.2", type:"mcq", text:"A flower that has calyx, corolla, stamens, and pistil is called:", options:["Naked flower", "Typical flower", "Unisexual flower", "Incomplete flower"], correct:"Typical flower", explanation:"A typical (complete) flower has all four floral whorls.", skill:"remember"},
+        { id:19, unit:"3", lesson:"3.2", type:"mcq", text:"Which is a characteristic of wind-pollinated flowers?", options:["Large bright petals", "Nectar production", "Long hanging anthers", "Sticky pollen grains"], correct:"Long hanging anthers", explanation:"Long, exposed anthers help release pollen easily into the wind.", skill:"distinguish"},
+        
+        // Unit 4 – Lesson 4.1 (Climate)
+        { id:20, unit:"4", lesson:"4.1", type:"mcq", text:"Which city has the highest average summer temperature? (Egypt)", options:["Alexandria (31°N)", "Cairo (30°N)", "Aswan (24°N)", "Same for all"], correct:"Aswan", explanation:"Lower latitude (closer to equator) means more direct sunlight and higher temperatures.", skill:"apply"},
+        { id:21, unit:"4", lesson:"4.1", type:"mcq", text:"Standard atmospheric pressure at sea level equals:", options:["760 mm Hg", "1013.25 mb", "Both are correct", "760 mb"], correct:"Both are correct", explanation:"760 mm Hg = 1013.25 millibars.", skill:"remember"},
+        
+        // Unit 4 – Lesson 4.2 (Winds)
+        { id:22, unit:"4", lesson:"4.2", type:"mcq", text:"In the Northern Hemisphere, the Coriolis effect deflects winds:", options:["To the right (clockwise)", "To the left (counterclockwise)", "No deflection", "Towards the equator"], correct:"To the right (clockwise)", explanation:"Earth's rotation causes deflection to the right in the Northern Hemisphere.", skill:"understand"},
+    ];
+
+    let currentQuestions = [];
+
+    function generateQuestions(unit, lesson, count=5) {
+        let filtered = questionBank.filter(q => q.unit === unit);
+        if(lesson !== "all") filtered = filtered.filter(q => q.lesson === lesson);
+        if(filtered.length === 0) filtered = [...questionBank];
+        let shuffled = [...filtered];
+        for(let i=shuffled.length-1;i>0;i--){
+            const j=Math.floor(Math.random()*(i+1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, count);
+    }
+
+    function renderQuestions(questions) {
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const qDiv = document.createElement('div');
+            qDiv.classList.add('question-box');
+            qDiv.dataset.id = q.id;
+            qDiv.dataset.type = q.type;
+            qDiv.dataset.correct = q.correct;
+            qDiv.dataset.explanation = q.explanation;
+
+            let qHtml = `<div class="question-text">${idx+1}. ${q.text}</div>`;
+            if(q.type === 'mcq') {
+                qHtml += `<div class="options-group" data-qidx="${idx}">`;
+                q.options.forEach(opt => {
+                    qHtml += `<label class="option"><input type="radio" name="q${idx}" value="${opt}"> ${opt}</label>`;
+                });
+                qHtml += `</div>`;
+            } else {
+                qHtml += `<div class="essay-area"><textarea rows="3" id="essay_${idx}" placeholder="Write your answer here..."></textarea></div>`;
+            }
+            qDiv.innerHTML = qHtml;
+            container.appendChild(qDiv);
+        });
+    }
+
+    function evaluateExam(questions) {
+        let score = 0;
+        let total = questions.length;
+        let feedbackHtml = '<div class="feedback"><h4>🔍 Grading Result:</h4><ul>';
+
+        for(let i=0; i<questions.length; i++) {
+            const q = questions[i];
+            let userAnswer = '';
+            let isCorrect = false;
+            let expl = q.explanation || "Check your textbook.";
+            
+            if(q.type === 'mcq') {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                userAnswer = selected ? selected.value : '';
+                isCorrect = (userAnswer === q.correct);
+            } else {
+                const textarea = document.getElementById(`essay_${i}`);
+                userAnswer = textarea ? textarea.value.trim() : '';
+                let keywords = q.correctKeywords || [];
+                if(keywords.length===0 && typeof q.correct === 'string') keywords = [q.correct];
+                const match = keywords.some(kw => userAnswer.toLowerCase().includes(kw.toLowerCase()));
+                isCorrect = (userAnswer.length > 10 && match);
+            }
+
+            if(isCorrect) score++;
+            const status = isCorrect ? '✅ Correct' : '❌ Wrong';
+            feedbackHtml += `<li><strong>Question ${i+1}:</strong> ${status}<br>`;
+            if(!isCorrect && q.type==='mcq') feedbackHtml += ` Correct answer: ${q.correct}<br>`;
+            if(!isCorrect && q.type==='essay') feedbackHtml += ` Model answer should include: ${q.correctKeywords ? q.correctKeywords.join(', ') : q.correct}<br>`;
+            feedbackHtml += `<span style="color:#2c5282;">📘 Explanation: ${expl}</span></li><br>`;
+        }
+        feedbackHtml += '</ul></div>';
+        const percent = (score/total)*100;
+        const gradeLetter = percent >= 90 ? 'A+' : (percent>=75 ? 'A' : (percent>=60 ? 'B' : (percent>=50 ? 'C' : 'D')));
+        feedbackHtml += `<div class="score-card">⭐ Your Score: ${score} out of ${total} (${percent.toFixed(1)}%) | Grade: ${gradeLetter}</div>`;
+        document.getElementById('resultArea').innerHTML = feedbackHtml;
+        
+        let weakLessons = new Set();
+        questions.forEach((q,i)=>{
+            const userCorrect = (()=>{
+                if(q.type==='mcq') {
+                    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                    return selected ? selected.value === q.correct : false;
+                } else {
+                    const textarea = document.getElementById(`essay_${i}`);
+                    const ans = textarea ? textarea.value.trim() : '';
+                    const keywords = q.correctKeywords || (typeof q.correct === 'string' ? [q.correct] : []);
+                    return (ans.length>10 && keywords.some(kw=>ans.toLowerCase().includes(kw.toLowerCase())));
+                }
+            })();
+            if(!userCorrect) weakLessons.add(`${q.lesson}`);
+        });
+        let advice = '';
+        if(weakLessons.size>0) advice = `⚠️ Weak areas: ${Array.from(weakLessons).join(', ')}. Review these lessons in your textbook.`;
+        else advice = '🎉 Excellent! You have mastered this material. Keep it up!';
+        document.getElementById('performanceSummary').innerHTML = `📊 Smart Report: ${advice}`;
+        document.getElementById('statsCard').style.display = 'block';
+    }
+
+    document.getElementById('generateExamBtn').addEventListener('click', () => {
+        const unit = document.getElementById('unitSelect').value;
+        const lesson = document.getElementById('lessonSelect').value;
+        currentQuestions = generateQuestions(unit, lesson, 5);
+        renderQuestions(currentQuestions);
+        document.getElementById('quizPanel').style.display = 'block';
+        document.getElementById('resultArea').innerHTML = '';
+        document.getElementById('statsCard').style.display = 'none';
+    });
+
+    document.getElementById('fullExamBtn').addEventListener('click', () => {
+        const unit = document.getElementById('unitSelect').value;
+        const lesson = document.getElementById('lessonSelect').value;
+        currentQuestions = generateQuestions(unit, lesson, 15);
+        renderQuestions(currentQuestions);
+        document.getElementById('quizPanel').style.display = 'block';
+        document.getElementById('resultArea').innerHTML = '';
+        document.getElementById('statsCard').style.display = 'none';
+    });
+
+    document.getElementById('submitExam').addEventListener('click', () => {
+        if(!currentQuestions.length) {
+            alert('Please generate an exam first.');
+            return;
+        }
+        evaluateExam(currentQuestions);
+    });
+
+    console.log("Ready – English exam system with Mr. Mostafa Farid banner.");
+</script>
+</body>
+</html>
